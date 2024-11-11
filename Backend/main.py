@@ -5,6 +5,8 @@ from database import engine
 
 from routers import users
 
+import models
+
 app = FastAPI(title="Krishi-Hut: Backend")
 
 app.include_router(users.router)
