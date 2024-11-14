@@ -1,6 +1,6 @@
 from sqlmodel import SQLModel, Field
 from pydantic import EmailStr
-from datetime import datetime
+from datetime import date
 
 class User(SQLModel, table=True):
     __tablename__ = "users"
@@ -8,8 +8,8 @@ class User(SQLModel, table=True):
     id: int = Field(primary_key=True, index=True, default=None)
     first_name: str
     last_name: str | None
-    email: EmailStr
+    email: EmailStr = Field(unique=True, index=True)
     password: str
-    nid: str
-    ac_creation: datetime
-    ac_updation: datetime | None = Field(default=None)
+    is_active: bool | None = Field(default=False)
+    ac_creation: date = Field(default=None)
+    ac_updation: date | None = Field(default=None)
