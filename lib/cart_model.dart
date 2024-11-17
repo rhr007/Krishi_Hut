@@ -75,4 +75,4 @@ class CartModel with ChangeNotifier {
     }
     return total;
   }
-}
+}       //cart_model_code
