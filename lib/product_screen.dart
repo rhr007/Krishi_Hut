@@ -134,4 +134,4 @@ class ProductDetail extends StatelessWidget {
       ),
     );
   }
-}
+}      //product screen
