@@ -68,7 +68,7 @@ class HomeScreen extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
                 padding:
-                const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                 backgroundColor: Colors.green,
               ),
               child: const Text(
@@ -81,4 +81,4 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-}
+} // End of Code
