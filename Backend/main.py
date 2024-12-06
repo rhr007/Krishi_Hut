@@ -13,4 +13,4 @@ app.include_router(registration.router)
 
 @app.on_event("startup")
 def on_startup():
-    SQLModel.metadata.create_all(engine)
+    SQLModel.metadata.create_all(engine) #This will create the tables in database.
