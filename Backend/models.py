@@ -11,5 +11,6 @@ class User(SQLModel, table=True):
     email: EmailStr = Field(unique=True, index=True)
     password: str
     is_active: bool | None = Field(default=False)
+    is_admin: bool | None = Field(default=False)
     ac_creation: date = Field(default=None)
     ac_updation: date | None = Field(default=None)
