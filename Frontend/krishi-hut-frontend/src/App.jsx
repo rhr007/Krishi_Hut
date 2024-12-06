@@ -5,18 +5,19 @@ import { Routes, Route } from 'react-router-dom';
 
 import Home from './components/Home'
 import SignUp from './components/SignUp'
+import Footer from './components/Footer';
 
 const App = () => {
   return (
-    <>
-      <Navbar />
+    <div className='app-container'>
 
       <Routes>
-        <Route path='home' element={<Home />} />
+        <Route path='' element={<Home />} />
         <Route path='signup' element={<SignUp />} />
       </Routes>
 
-    </>
+      <Footer />
+    </div>
   );
 }
 

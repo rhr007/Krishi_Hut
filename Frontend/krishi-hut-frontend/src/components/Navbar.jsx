@@ -11,7 +11,7 @@ const Navbar = () => {
 
             <div className={styles.listContainer}>
                 <ul className={styles.navlist}>
-                    <NavLink to='/home'><li>Home</li></NavLink>
+                    <NavLink to='/'><li>Home</li></NavLink>
                     <NavLink to='/feature'><li>Feature</li></NavLink>
                     <NavLink to='/contact'><li>Contact</li></NavLink>
                     <NavLink to='/about'><li>About</li></NavLink>
