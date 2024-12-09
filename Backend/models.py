@@ -9,6 +9,7 @@ class User(SQLModel, table=True):
     first_name: str
     last_name: str | None
     email: EmailStr = Field(unique=True, index=True)
+    contact: str = Field(unique=True)
     password: str
     is_active: bool | None = Field(default=False)
     is_admin: bool | None = Field(default=False)
