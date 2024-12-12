@@ -2,11 +2,12 @@ from fastapi import APIRouter, Depends, status
 from fastapi.responses import JSONResponse
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlmodel import Session, select
-from datetime import datetime
+
 
 import schemas, models, hashing
 from database import get_db
 import JWT_Token
+import Oauth2
 
 router = APIRouter(tags=["Sign In"])
 
@@ -30,3 +31,8 @@ def account_sign_in(request_body: OAuth2PasswordRequestForm = Depends(), db: Ses
     access_token = JWT_Token.create_access_token(data)
     return schemas.Token(access_token=access_token, token_type="bearer")
     # return JSONResponse(status_code=status.HTTP_200_OK, content={"message": "Token"})
+
+
+@router.get("/users/me/", response_model=schemas.UserBasicInfo)
+def read_users_me(current_user = Depends(Oauth2.get_current_user)):
+    return current_user

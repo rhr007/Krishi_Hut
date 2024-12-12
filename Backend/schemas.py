@@ -7,6 +7,12 @@ class UserSchema(BaseModel):
     contact: str
     password: str
 
+class UserBasicInfo(BaseModel):
+    id: int
+    email: EmailStr
+    is_admin: bool
+
+
 class OTPBody(BaseModel):
     email: EmailStr
     otp: str
