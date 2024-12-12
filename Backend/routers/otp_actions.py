@@ -5,6 +5,7 @@ from sqlmodel import Session, select
 
 from database import get_db
 import otp, schemas, models
+from SECRET_DATA import Email_Secrets
 
 router = APIRouter(tags=["OTP-Actions"], prefix="/otp")
 
@@ -35,8 +36,8 @@ def verify_otp(request_body: schemas.OTPBody, db: Session = Depends(get_db)):
 
 def send_otp(receiver, otp_to_send):
     import smtplib
-    sender = "rhr007bdu@gmail.com"
-    subject = "OTP From BDU Cloud Server."
+    sender = Email_Secrets.sender_email()
+    subject = "OTP From Krishi Hut."
     message = f"Your OTP is {otp_to_send}, it will expire in 2 minutes.\nThank you,\nTeam Krishi Hut."
 
     text = f"Subject: {subject}\n\n{message}"
@@ -44,6 +45,6 @@ def send_otp(receiver, otp_to_send):
     server = smtplib.SMTP("smtp.gmail.com", 587)
     server.starttls()
 
-    server.login(sender, "nilf bzfh fspg ufwa")
+    server.login(sender, Email_Secrets.app_pass())
 
     server.sendmail(sender, receiver, text)

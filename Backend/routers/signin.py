@@ -6,7 +6,7 @@ from datetime import datetime
 
 import schemas, models, hashing
 from database import get_db
-import JWT
+import JWT_Token
 
 router = APIRouter(tags=["Sign In"])
 
@@ -27,6 +27,6 @@ def account_sign_in(request_body: OAuth2PasswordRequestForm = Depends(), db: Ses
         'id': user.id
     }
     
-    access_token = JWT.create_access_token(data)
+    access_token = JWT_Token.create_access_token(data)
     return schemas.Token(access_token=access_token, token_type="bearer")
     # return JSONResponse(status_code=status.HTTP_200_OK, content={"message": "Token"})

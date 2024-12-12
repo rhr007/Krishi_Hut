@@ -10,3 +10,7 @@ class UserSchema(BaseModel):
 class OTPBody(BaseModel):
     email: EmailStr
     otp: str
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
