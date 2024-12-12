@@ -7,7 +7,6 @@ class UserSchema(BaseModel):
     contact: str
     password: str
 
-class RegistrationResponse(BaseModel):
-    first_name: str
-    last_name: str
+class OTPBody(BaseModel):
     email: EmailStr
+    otp: str
