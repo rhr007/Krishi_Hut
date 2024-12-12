@@ -17,10 +17,14 @@ a {
 }
 
 .active li {
-  color: rgb(191, 0, 255);
+  color: rgb(46, 98, 253);
   font-weight: bold;
 
 
+}
+
+.active p {
+  color: red;
 }
 
 .active button {

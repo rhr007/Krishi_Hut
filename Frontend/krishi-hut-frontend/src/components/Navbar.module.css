@@ -1,30 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:wght@544&display=swap');
 
-.container{
+.container {
     display: flex;
     justify-content: space-between;
     background-color: rgb(179, 247, 223);
 
     overflow: hidden;
-    position: fixed; /* Set the navbar to fixed position */
+    position: fixed;
+    /* Set the navbar to fixed position */
     top: 0;
     left: 0;
     width: 100%;
 }
 
-.header{
+.header {
     display: flex;
     align-items: center;
     margin: 0.5%;
 }
 
-.logo{
+.logo {
     margin: 10px;
-    margin-right:4%x;
+    margin-right: 4%x;
     cursor: pointer;
 }
 
-.webName{
+.webName {
     color: rgb(30, 27, 27);
     font-family: "Sour Gummy", sans-serif;
     font-size: 130%;
@@ -32,16 +33,17 @@
     cursor: pointer;
 }
 
-.listContainer{
+.listContainer {
     align-items: center;
     display: flex;
 }
-ul{
+
+ul {
     list-style: none;
-    display: flex; 
+    display: flex;
 }
 
-li{
+li {
     padding-right: 50px;
     font-size: large;
     color: rgb(62, 59, 59);
@@ -49,27 +51,27 @@ li{
     transition: 0.5s;
 }
 
-li:hover{
+li:hover {
     font-weight: bold;
-    color: rgb(8, 55, 94);
+    color: rgb(35, 39, 41);
     cursor: pointer;
 }
 
-.buttons{
+.buttons {
     align-items: center;
     display: flex;
 }
 
-.buttonList{
+.buttonList {
     list-style: none;
     display: flex;
 }
 
-.buttonList button{
+.buttonList button {
     margin-right: 15px;
 }
 
-button{
+button {
     width: 150px;
     height: 35px;
     font-size: large;
@@ -81,12 +83,12 @@ button{
     transition: 0.45s;
 }
 
-.signin:hover{
+.signin:hover {
     background: rgb(2, 210, 229);
     color: rgb(255, 255, 255);
 }
 
-.signup:hover{
+.signup:hover {
     background: rgb(186, 116, 248);
     color: rgb(255, 255, 255);
 }

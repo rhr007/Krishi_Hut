@@ -5,7 +5,7 @@ import axios from 'axios'
 import styles from '../components/HomePageNavbar.module.css'
 import ProfileInfo from './ProfileInfo'
 import URL from '../URL'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 const HomePageNavbar = () => {
     const [isVisible, setIsVisible] = useState(false)
@@ -67,6 +67,7 @@ const HomePageNavbar = () => {
         <>
             <div className={styles.mainContainer}>
                 <p onClick={handleVisible}>Profile</p>
+                <p>Dashboard</p>
                 <button onClick={signOut}>Sign Out</button>
             </div>
 
