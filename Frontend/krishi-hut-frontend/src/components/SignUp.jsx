@@ -3,9 +3,11 @@ import styles from '../components/SignUp.module.css'
 import axios from 'axios'
 import Navbar from './Navbar';
 import URL from '../URL';
+import { useNavigate } from 'react-router-dom';
 const SignUp = () => {
 
   const serverURL = `${URL()}/user`;
+  const navigate = useNavigate();
 
   const [firstName, setFirstName] = useState('')
   const [lasttName, setLastName] = useState('')
@@ -32,7 +34,9 @@ const SignUp = () => {
       axios.post(serverURL, userData).
         then(res => {
           if (res.status === 201) {
-            alert("Registration Successful")
+            sessionStorage.setItem('email', email);
+            alert("Registration Successful");
+            navigate('/activate');
           }
         }).
         catch(err => {
@@ -43,20 +47,6 @@ const SignUp = () => {
             alert("Something went worng.\nPlease Try again later.")
           }
         })
-      // axios.post(serverURL, userData).then(response => {
-      //   if(response.status == 201){
-      //     location.reload()
-      //     alert("Account Registration Successful")
-      //     window.location.href="signin"
-
-      //   }
-      // }).catch(error => {
-      //   if(error.status == 400)
-      //   {
-      //     alert("This email is already Registered.");
-
-      //   }
-      // })
 
     }
   }
