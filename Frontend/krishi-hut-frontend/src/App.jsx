@@ -11,6 +11,8 @@ import SignIn from './components/SignIn';
 import Dashboard from './components/Dashboard'
 import PersonalAds from './components/PersonalAds';
 import AdminDashboard from './components/AdminDashboard';
+import ProductDetails from './components/ProductDetails';
+import ProductDetailsForUser from './components/ProductDetailsForUser';
 
 const App = () => {
   return (
@@ -24,6 +26,8 @@ const App = () => {
         <Route path='dashboard' element={<Dashboard />} />
         <Route path='yourads' element={<PersonalAds />} />
         <Route path='admin' element={<AdminDashboard />} />
+        <Route path='project-detail/:id' element={<ProductDetails />} />
+        <Route path='project-detail-user/:id' element={<ProductDetailsForUser />} />
       </Routes>
 
       <Footer />

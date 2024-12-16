@@ -25,29 +25,3 @@ img {
     grid-template-columns: repeat(4, 1fr);
     gap: 25px;
 }
-
-.buttons {
-    display: flex;
-    gap: 30px;
-    padding-bottom: 18px;
-}
-
-.actBut {
-    background-color: aliceblue;
-    max-width: 100px;
-}
-
-.actBut:hover {
-    background-color: rgb(0, 174, 17);
-    color: white;
-}
-
-.rejBut {
-    background-color: aliceblue;
-    max-width: 100px;
-}
-
-.rejBut:hover {
-    background-color: rgb(220, 7, 21);
-    color: white;
-}

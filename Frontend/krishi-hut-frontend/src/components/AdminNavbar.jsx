@@ -34,18 +34,16 @@ const AdminNavbar = () => {
             })
                 .then(response => {
                     if (response.status == 200) {
-                        // console.log(response);
+
                         setFirstName(response.data.first_name)
                         setLastName(response.data.last_name)
                         setEmail(response.data.email)
                         setContact(response.data.contact)
                         setAcCreated(response.data.ac_creation)
-                        console.log(response.data.contact);
 
                     }
                 })
                 .catch(error => {
-                    console.log(error);
                     navigate('/signin')
                 })
         }

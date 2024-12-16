@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 
 import styles from '../components/ProductDetails.module.css'
-import AdminNavbar from './AdminNavbar';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import URL from '../URL';
 import axios from 'axios';
+import HomePageNavbar from './HomePageNavbar';
 
-const ProductDetails = () => {
+const ProductDetailsForUser = () => {
     const { id } = useParams();
     const serverURL = `${URL()}/ads`;
     const [prodectDetail, setProductDetail] = useState()
@@ -20,47 +20,12 @@ const ProductDetails = () => {
         }).
             catch(e => {
                 alert("Something Went Wrong")
-                navigate('/admin')
+                navigate('/dashboard')
             })
     }, []);
-
-    function handleAdAccept() {
-        axios(
-            {
-                method: 'put',
-                url: `${serverURL}/accept/${id}`,
-                'headers': {
-                    'Content-Type': 'applicaton/json',
-                    'Authorization': `Bearer ${token}`
-                }
-            }).then(() => {
-                alert("Ad Accepted")
-                navigate('/admin')
-            }).
-            catch(e => {
-                navigate('/admin')
-            })
-    };
-
-    function handleAdReject() {
-        axios.delete(`${serverURL}/${id}`, {
-            'headers': {
-                'Authorization': `Bearer ${token}`
-            }
-        }).
-            then(() => {
-                alert("Ad Rejected");
-                navigate('/admin')
-            }).
-            catch(() => {
-                alert("Server Error")
-                navigate('/admin')
-            })
-    }
-
     return (
         <>
-            <AdminNavbar />
+            <HomePageNavbar />
             <div className={styles.mainContainer}>
                 {
                     prodectDetail ? <div className={styles.detailInfo}>
@@ -74,11 +39,8 @@ const ProductDetails = () => {
                         <p>Owner: {prodectDetail.user.first_name}</p>
                         <p>Owner Mobile Number: <b>{prodectDetail.user.contact}</b></p>
                         <p>Owner Email: <b>{prodectDetail.user.email}</b></p>
+                        <p>Published At: <b>{new Date(prodectDetail.approved_time).toLocaleString()}</b></p>
 
-                        <div className={styles.buttons}>
-                            <button className={styles.actBut} onClick={handleAdAccept}>Accept</button>
-                            <button className={styles.rejBut} onClick={handleAdReject}>Reject</button>
-                        </div>
                     </div>
 
                         : <p>Loading</p>
@@ -87,7 +49,7 @@ const ProductDetails = () => {
 
             </div>
         </>
-    );
+    )
 }
 
-export default ProductDetails;
+export default ProductDetailsForUser

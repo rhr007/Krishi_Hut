@@ -12,8 +12,8 @@ import HomePageNavbar from './HomePageNavbar'
 const Dashboard = () => {
     const [token, setToken] = useState(sessionStorage.getItem("token") || '')
     const navigate = useNavigate()
-    const serverURL = URL()
-    const [projects, setProjects] = useState([])
+    const serverURL = `${URL()}`
+    const [approved, setApproved] = useState([])
 
     useEffect(() => {
         if (!token) {
@@ -28,7 +28,6 @@ const Dashboard = () => {
             })
                 .then(response => {
                     if (response.status == 200) {
-                        // console.log(typeof(response.data));
 
                     }
                 })
@@ -36,20 +35,42 @@ const Dashboard = () => {
                     navigate('/signin')
                 })
         }
-    }, [])
+    }, []);
 
+    useEffect(() => {
+        axios.get(`${serverURL}/ads/approved`).then(res => {
+            setApproved(res.data)
+        }).
+            catch(error => {
+                alert("Someting Went Wrong.")
+            })
+    }, []);
+
+
+    function gotoProductDetail(id) {
+        navigate(`/project-detail-user/${id}`)
+    }
 
 
     return (
         <div className={styles.mainContainer}>
 
             <HomePageNavbar />
-            {/* <div className={styles.projectContainer}>
-                <div className={styles.headline}>
-                    <p>Your Project List</p>
-                </div>
 
-            </div> */}
+            {approved.length > 0 ?
+                <div className={styles.adsContainer}>
+                    {approved.map(ad => (
+                        <div key={ad.id} className={styles.ads} onClick={() => (gotoProductDetail(ad.id))} >
+                            <img src='https://placehold.co/200x150' />
+                            <p>Title: {ad.title}</p>
+                            <p>Price: {ad.price}</p>
+                            <p>Location: {ad.location}</p>
+
+                        </div>
+                    ))}
+
+                </div> : <p>LOADING</p>
+            }
 
 
 
