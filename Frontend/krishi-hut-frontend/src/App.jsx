@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import Activate from './components/Activate';
 import SignIn from './components/SignIn';
 import Dashboard from './components/Dashboard'
+import PersonalAds from './components/PersonalAds';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path='activate' element={<Activate />} />
         <Route path='signin' element={<SignIn />} />
         <Route path='dashboard' element={<Dashboard />} />
+        <Route path='yourads' element={<PersonalAds />} />
       </Routes>
 
       <Footer />

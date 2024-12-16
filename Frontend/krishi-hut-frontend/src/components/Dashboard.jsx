@@ -44,12 +44,12 @@ const Dashboard = () => {
         <div className={styles.mainContainer}>
 
             <HomePageNavbar />
-            <div className={styles.projectContainer}>
+            {/* <div className={styles.projectContainer}>
                 <div className={styles.headline}>
                     <p>Your Project List</p>
                 </div>
 
-            </div>
+            </div> */}
 
 
 

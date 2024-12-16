@@ -20,6 +20,8 @@ const HomePageNavbar = () => {
     const [contact, setContact] = useState('')
     const [acCreated, setAcCreated] = useState('')
 
+    const [active, setActive] = useState(1); // to manage active p tag
+
     useEffect(() => {
         if (!token) {
             navigate('/signin')
@@ -51,9 +53,23 @@ const HomePageNavbar = () => {
     }, [])
 
 
-    function handleVisible() {
-        setIsVisible(currentVisible => !currentVisible)
+    function handleDashboardActive() {
+        setActive(1);
+        setIsVisible(false);
+        navigate('/dashboard')
     }
+
+    function handleYourAdActive() {
+        setActive(2);
+        setIsVisible(false);
+        navigate('/yourads')
+    }
+
+    function handleVisible() {
+        setIsVisible(currentVisible => !currentVisible);
+        setActive(0);
+    }
+
 
     function signOut() {
         const isConfirmed = confirm("Are you sure, you want to sign out?")
@@ -66,9 +82,26 @@ const HomePageNavbar = () => {
     return (
         <>
             <div className={styles.mainContainer}>
-                <p onClick={handleVisible}>Profile</p>
-                <p>Dashboard</p>
+                <ul>
+                    <li className={active == 0 ? styles.actv : ''} onClick={handleVisible}>Profile</li>
+                    <NavLink to={'/dashboard'}><li>Dashboard</li></NavLink>
+                    <NavLink to={'/yourads'}><li>Your Ads</li></NavLink>
+
+                </ul>
+                {/* <p className={active == 0 ? styles.actv : ''} onClick={handleVisible}>
+                    Profile
+                </p>
+
+                <p className={active == 1 ? styles.actv : ''} onClick={handleDashboardActive}>
+                    Dashboard
+                </p>
+
+                <p className={active == 2 ? styles.actv : ''} onClick={handleYourAdActive}>
+                    Your Ads
+                </p> */}
+
                 <button onClick={signOut}>Sign Out</button>
+
             </div>
 
             {isVisible ? <ProfileInfo firstName={firstName} lasttName={lasttName} email={email} contact={contact} acCreated={acCreated} /> : ""}
