@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlmodel import SQLModel
 
 from database import engine
-from routers import registration, otp_actions, signin
+from routers import registration, otp_actions, signin, ads
 
 
 app = FastAPI(title="Krishi-Hut: Backend")
@@ -23,6 +23,7 @@ app.add_middleware(
 app.include_router(registration.router)
 app.include_router(otp_actions.router)
 app.include_router(signin.router)
+app.include_router(ads.router)
 
 @app.on_event("startup")
 def on_startup():
