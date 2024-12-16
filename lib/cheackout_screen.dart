@@ -8,7 +8,7 @@ class CheckoutPage extends StatelessWidget {
     {'name': 'Agricultural Instruments', 'price': 250.0, 'quantity': 5},
     {'name': 'Digital Instruments', 'price': 1000.0, 'quantity': 5},
     {'name': 'Fresh Vegetables', 'price': 30.0, 'quantity': 5},
-    {'name': 'agricultural Medicines', 'price': 125.0, 'quantity': 5},
+    {'name': 'Agricultural Medicines', 'price': 125.0, 'quantity': 5},
   ];
 
   CheckoutPage({super.key});
@@ -18,28 +18,57 @@ class CheckoutPage extends StatelessWidget {
         0, (sum, item) => sum + (item['price'] * item['quantity']));
   }
 
-  void placeOrder(BuildContext context) {
-    // Replace this logic with your backend call or Firestore integration
-    showDialog(
-      context: context,
-      builder: (_) => AlertDialog(
-        title: const Text('Order Placed!'),
-        content: const Text('Your order has been successfully placed.'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('OK'),
-          ),
-        ],
-      ),
-    );
+  Future<void> placeOrder(BuildContext context) async {
+    // Simulate placing an order (this can be replaced with an actual API call)
+    try {
+      showDialog(
+        context: context,
+        barrierDismissible: false, // Prevent closing the dialog prematurely
+        builder: (_) => const Center(child: CircularProgressIndicator()),
+      );
+
+      // Simulating a delay for the order processing
+      await Future.delayed(const Duration(seconds: 2));
+
+      Navigator.pop(context); // Close the loading dialog
+
+      // Show a success message
+      showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+          title: const Text('Order Placed!'),
+          content: const Text('Your order has been successfully placed.'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
+    } catch (error) {
+      Navigator.pop(context); // Close the loading dialog if error occurs
+      showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+          title: const Text('Error'),
+          content: Text('Failed to place the order: $error'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Checkout'),
+        title: const Text('Checkout'),
       ),
       body: Column(
         children: [
@@ -52,9 +81,9 @@ class CheckoutPage extends StatelessWidget {
                 return ListTile(
                   title: Text(item['name']),
                   subtitle:
-                      Text('Price: \$${item['price']} x ${item['quantity']}'),
+                      Text('Price: ৳${item['price']} x ${item['quantity']}'),
                   trailing: Text(
-                      '\$${(item['price'] * item['quantity']).toStringAsFixed(2)}'),
+                      '৳${(item['price'] * item['quantity']).toStringAsFixed(2)}'),
                 );
               },
             ),
@@ -67,15 +96,16 @@ class CheckoutPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  'Total: \$${getTotalPrice().toStringAsFixed(2)}',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  'Total: ৳${getTotalPrice().toStringAsFixed(2)}',
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
 
                 // Place Order Button
                 ElevatedButton(
                   onPressed: () => placeOrder(context),
-                  child: Text('Place Order'),
+                  child: const Text('Place Order'),
                 ),
               ],
             ),
