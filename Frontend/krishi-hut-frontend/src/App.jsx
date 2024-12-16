@@ -10,6 +10,7 @@ import Activate from './components/Activate';
 import SignIn from './components/SignIn';
 import Dashboard from './components/Dashboard'
 import PersonalAds from './components/PersonalAds';
+import AdminDashboard from './components/AdminDashboard';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route path='signin' element={<SignIn />} />
         <Route path='dashboard' element={<Dashboard />} />
         <Route path='yourads' element={<PersonalAds />} />
+        <Route path='admin' element={<AdminDashboard />} />
       </Routes>
 
       <Footer />

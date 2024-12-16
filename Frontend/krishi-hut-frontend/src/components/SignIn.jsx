@@ -19,7 +19,7 @@ const SignIn = () => {
       username: email,
       password: password
     }
-    // console.log(userData);
+
     axios.post(serverURL, userData, {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -28,7 +28,12 @@ const SignIn = () => {
       if (res.status == 200) {
         // console.log(res.data);
         sessionStorage.setItem("token", res.data.access_token)
-        navigate('/dashboard')
+        if (res.data.is_admin) {
+          navigate('/admin')
+        }
+        else {
+          navigate('/dashboard')
+        }
 
       }
     }).catch(error => {
