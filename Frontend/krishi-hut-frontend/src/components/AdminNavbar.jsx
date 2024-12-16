@@ -26,7 +26,7 @@ const AdminNavbar = () => {
             navigate('/signin')
         }
         else {
-            axios.get(`${serverURL}/users/me`, {
+            axios.get(`${serverURL}/admin`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
