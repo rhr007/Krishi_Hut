@@ -29,10 +29,18 @@ def account_sign_in(request_body: OAuth2PasswordRequestForm = Depends(), db: Ses
     }
     
     access_token = JWT_Token.create_access_token(data)
-    return schemas.Token(access_token=access_token, token_type="bearer")
+    return schemas.Token(access_token=access_token, token_type="bearer", is_admin=user.is_admin)
     # return JSONResponse(status_code=status.HTTP_200_OK, content={"message": "Token"})
 
 
 @router.get("/users/me/", response_model=schemas.UserBasicInfo)
 def read_users_me(current_user = Depends(Oauth2.get_current_user)):
     return current_user
+
+
+@router.get("/admin", response_model=schemas.UserBasicInfo)
+def read_users_me(current_user = Depends(Oauth2.get_current_user)):
+    if not current_user.is_admin:
+        return JSONResponse(status_code=status.HTTP_401_UNAUTHORIZED, content={"message": "hey you are not admin"})
+    return current_user
+
