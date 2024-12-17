@@ -26,6 +26,7 @@ const ProductDetailsForUser = () => {
     return (
         <>
             <HomePageNavbar />
+
             <div className={styles.mainContainer}>
                 {
                     prodectDetail ? <div className={styles.detailInfo}>

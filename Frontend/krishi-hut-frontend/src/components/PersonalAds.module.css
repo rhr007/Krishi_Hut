@@ -1,0 +1,39 @@
+.ads {
+    background-color: rgb(136, 254, 155);
+    max-width: 300px;
+    justify-items: center;
+    cursor: pointer;
+    border: 2px dashed black;
+    border-radius: 20px;
+    transition: .5s;
+}
+
+.ads:hover {
+    background-color: rgb(71, 75, 75);
+    color: rgb(246, 251, 255);
+}
+
+img {
+    margin-top: 10px;
+    border: 2px solid rgb(26, 129, 255);
+    border-radius: 10px;
+}
+
+.adsContainer {
+    margin-top: 2%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.uploadAd {
+    margin-top: 2%;
+    width: 40%;
+    margin-left: 29%;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.uploadAd:hover {
+    background-color: rgb(209, 226, 255);
+}
