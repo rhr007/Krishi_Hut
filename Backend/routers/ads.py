@@ -60,3 +60,11 @@ def accept_an_ad(id, db: Session = Depends(get_db), current_user = Depends(Oauth
 
     db.delete(ad)
     db.commit()
+
+@router.get('/user/')
+def read_all_ads_of_a_user( db: Session = Depends(get_db), current_user = Depends(Oauth2.get_current_user)):
+    user_id = current_user.id
+
+    ads = db.exec(select(models.Ads).where(models.Ads.user_id == user_id).where(models.Ads.is_approved == True)).all()
+
+    return ads

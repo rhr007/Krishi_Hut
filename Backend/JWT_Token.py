@@ -23,14 +23,16 @@ def create_access_token(data: dict):
     return encoded_jwt
 
 
-def verify_token(token: str):
+def verify_token(token: str): 
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         user_id: str = payload.get("id")
         if user_id is None:
+            return 0
             return JSONResponse(status_code=status.HTTP_401_UNAUTHORIZED, content={'message': 'unauthorized'})
         
     except InvalidTokenError:
+        return 0
         return JSONResponse(status_code=status.HTTP_401_UNAUTHORIZED, content={'message': 'unauthorized'})
     
     return user_id

@@ -34,6 +34,7 @@ class AdRequestBody(BaseModel):
     description: str
     location: str
     price: float
+    url: str
 
 class UserInfoForAd(BaseModel):
     id: int
@@ -45,4 +46,8 @@ class UserInfoForAd(BaseModel):
 class AdResponseSchema(AdRequestBody):
     id: int
     approved_time: datetime | None
+    url: str
     user: UserInfoForAd
+
+class ProfilePicture(BaseModel):
+    url: str

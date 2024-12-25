@@ -31,5 +31,14 @@ class Ads(SQLModel, table=True):
     is_approved: bool = Field(default=False)
     approved_by: int | None = Field(default= None)
     approved_time: datetime | None = Field(default= None)
+    url: str
 
     user: User = Relationship(back_populates='ads')
+
+
+class ProfilePicture(SQLModel, table=True):
+    __tablename__ = 'profile_pictures'
+
+    id: int = Field(primary_key=True, index=True, default=None)
+    user_id: int = Field(foreign_key='users.id')
+    url: str

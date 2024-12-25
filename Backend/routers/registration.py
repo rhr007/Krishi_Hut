@@ -2,7 +2,12 @@ from datetime import date
 from fastapi.responses import JSONResponse
 from sqlmodel import or_
 import routers.dependencies as d
-import hashing
+import hashing, Oauth2
+from fastapi import Depends
+
+import models
+from sqlmodel import Session, select
+from database import get_db
 
 router = d.APIRouter(tags=["Registration"])
 
@@ -29,7 +34,29 @@ def user_registration(request_body: d.schemas.UserSchema, db: d.Session = d.Depe
     
 
 
+@router.post('/profile/')
+def set_profile_picture(req_body: d.schemas.ProfilePicture, current_user = Depends(Oauth2.get_current_user), db: Session = Depends(get_db)):
+    check = db.exec(select(models.ProfilePicture).where(models.ProfilePicture.user_id == current_user.id)).first()
+    if not check:
+        picture = models.ProfilePicture(user_id=current_user.id, url=req_body.url)
+        db.add(picture)
+        db.commit()
+        return {"message": "Ok"}
+    else:
+         check.url = req_body.url
+         db.add(check)
+         db.commit()
+         return {"message": "Ok"}
 
+    
+
+@router.get('/dp')
+def show_profile_picture(current_user = Depends(Oauth2.get_current_user), db: Session = Depends(get_db)):
+    picture = db.exec(select(models.ProfilePicture).where(models.ProfilePicture.user_id == current_user.id)).first()
+
+    return {"msg": picture.url}
+
+     
 
 def get_current_date_time():
     return date.today()
