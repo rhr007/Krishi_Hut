@@ -25,3 +25,10 @@ img {
     grid-template-columns: repeat(4, 1fr);
     gap: 25px;
 }
+
+.ImageBody {
+    max-width: 200px;
+    max-height: 150px;
+    min-width: 200px;
+    min-height: 200px;
+}

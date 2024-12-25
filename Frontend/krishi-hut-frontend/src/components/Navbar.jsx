@@ -1,11 +1,14 @@
 import React from 'react'
 import styles from '../components/Navbar.module.css'
 import { Link, NavLink } from 'react-router-dom';
+
+import logoImg from '../images/logo_resize.png'
+
 const Navbar = () => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <img src="https://placehold.co/150x50" alt="img" className={styles.logo} />
+                <img src={logoImg} alt="img" className={styles.logo} />
                 <p className={styles.webName}>Krishi Hut</p>
             </div>
 

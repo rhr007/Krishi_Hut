@@ -37,3 +37,10 @@ img {
 .uploadAd:hover {
     background-color: rgb(209, 226, 255);
 }
+
+.ImageBody {
+    max-width: 200px;
+    max-height: 150px;
+    min-width: 200px;
+    min-height: 200px;
+}

@@ -23,6 +23,8 @@
     margin: 10px;
     margin-right: 4%x;
     cursor: pointer;
+    min-width: 100px;
+    max-height: 49px;
 }
 
 .webName {

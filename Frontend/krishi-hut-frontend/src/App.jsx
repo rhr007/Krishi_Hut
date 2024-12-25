@@ -13,6 +13,7 @@ import PersonalAds from './components/PersonalAds';
 import AdminDashboard from './components/AdminDashboard';
 import ProductDetails from './components/ProductDetails';
 import ProductDetailsForUser from './components/ProductDetailsForUser';
+import CreateAd from './components/CreateAd';
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
         <Route path='admin' element={<AdminDashboard />} />
         <Route path='project-detail/:id' element={<ProductDetails />} />
         <Route path='project-detail-user/:id' element={<ProductDetailsForUser />} />
+        <Route path='create-ad' element={<CreateAd />} />
       </Routes>
 
       <Footer />

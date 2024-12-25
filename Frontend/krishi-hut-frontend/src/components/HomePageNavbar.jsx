@@ -19,6 +19,7 @@ const HomePageNavbar = () => {
     const [email, setEmail] = useState('')
     const [contact, setContact] = useState('')
     const [acCreated, setAcCreated] = useState('')
+    const [id, setID] = useState(0);
 
     const [active, setActive] = useState(1); // to manage active p tag
 
@@ -41,6 +42,7 @@ const HomePageNavbar = () => {
                         setEmail(response.data.email)
                         setContact(response.data.contact)
                         setAcCreated(response.data.ac_creation)
+                        setID(response.data.id)
                         console.log(response.data.contact);
 
                     }
@@ -104,7 +106,7 @@ const HomePageNavbar = () => {
 
             </div>
 
-            {isVisible ? <ProfileInfo firstName={firstName} lasttName={lasttName} email={email} contact={contact} acCreated={acCreated} /> : ""}
+            {isVisible ? <ProfileInfo id={id} firstName={firstName} lasttName={lasttName} email={email} contact={contact} acCreated={acCreated} /> : ""}
         </>
     );
 }

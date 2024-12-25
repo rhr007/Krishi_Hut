@@ -65,9 +65,9 @@ const ProductDetails = () => {
                 {
                     prodectDetail ? <div className={styles.detailInfo}>
 
-                        <img src="https://placehold.co/250x250" alt="product image" />
+                        <img src={prodectDetail.url} alt='Product Image' className={styles.ImageBody} />
                         <p>Title: <b>{prodectDetail.title}</b></p>
-                        <p>Price: <b>{prodectDetail.price}</b></p>
+                        <p>Price: <b>{prodectDetail.price}</b> Taka</p>
                         <p>Catagory: {prodectDetail.catagory}</p>
                         <p>Description: {prodectDetail.description}</p>
                         <p>Location: {prodectDetail.location}</p>

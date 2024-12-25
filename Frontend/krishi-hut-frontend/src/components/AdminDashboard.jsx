@@ -36,9 +36,9 @@ const AdminDashboard = () => {
                 <div className={styles.adsContainer}>
                     {unapproved.map(ad => (
                         <div key={ad.id} className={styles.ads} onClick={() => (gotoProductDetail(ad.id))} >
-                            <img src='https://placehold.co/200x150' />
+                            <img src={ad.url} alt='Product Image' className={styles.ImageBody} />
                             <p>Title: {ad.title}</p>
-                            <p>Price: {ad.price}</p>
+                            <p>Price: {ad.price} Taka</p>
                             <p>Location: {ad.location}</p>
 
                         </div>

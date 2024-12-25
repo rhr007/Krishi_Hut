@@ -49,17 +49,21 @@ const PersonalAds = () => {
             })
     }, []);
 
+    function handleUploadAd() {
+        navigate('/create-ad')
+    }
+
 
     return (
         <>
             <HomePageNavbar />
-            <button className={styles.uploadAd}>Upload An Ad</button>
+            <button className={styles.uploadAd} onClick={handleUploadAd}>Upload An Ad</button>
             <div>
                 {approved.length > 0 ?
                     <div className={styles.adsContainer}>
                         {approved.map(ad => (
                             <div key={ad.id} className={styles.ads}>
-                                <img src='https://placehold.co/200x150' />
+                                <img src={ad.url} alt='Product Image' className={styles.ImageBody} />
                                 <p>Title: {ad.title}</p>
                                 <p>Price: {ad.price}</p>
                                 <p>Location: {ad.location}</p>
